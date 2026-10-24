@@ -1,0 +1,25 @@
+name: Wallex API read-only test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wallex-api-readonly-test
+  cancel-in-progress: false
+
+jobs:
+  test-markets:
+    name: Test Wallex market endpoints (read only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Test Wallex API
+        env:
+          WALLEX_API_KEY: ${{ secrets.WALLEX_API_KEY }}
+        run: python3 wallex-github-test/scripts/wallex_test.py
