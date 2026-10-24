@@ -1,0 +1,45 @@
+name: Wallex rate feed (read-only)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wallex-rate-feed
+  cancel-in-progress: false
+
+jobs:
+  update-rates:
+    name: Fetch prices and publish latest JSON
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Fetch latest Wallex prices (read-only)
+        env:
+          WALLEX_API_KEY: ${{ secrets.WALLEX_API_KEY }}
+        run: python3 wallex-github-test/scripts/wallex_feed.py
+
+      - name: Publish latest JSON to wallex-feed branch
+        run: |
+          set -euo pipefail
+          test -s wallex_rates.json
+          cp wallex_rates.json "$RUNNER_TEMP/wallex_rates.json"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git checkout --orphan wallex-feed-publish
+          git rm -rf . >/dev/null 2>&1 || true
+
+          cp "$RUNNER_TEMP/wallex_rates.json" wallex_rates.json
+          git add wallex_rates.json
+          git commit -m "Update latest Wallex rate feed"
+          git push --force origin HEAD:wallex-feed
