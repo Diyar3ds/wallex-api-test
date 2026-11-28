@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "source": "Wallex API",
+  "generated_utc": "2026-11-28T15:44:43Z",
+  "timestamp_utc": "2026-11-28T15:44:43Z",
+  "price_usd": 0.968,
+  "gram": {
+    "symbol": "GRAMUSDT",
+    "price_usd": 0.968,
+    "price_usdt": 0.968,
+    "last": 0.968,
+    "bid": 0.963,
+    "ask": 0.968
+  },
+  "prices": {
+    "gram_usdt_last": 0.968,
+    "usdt_tmn_last": 298484,
+    "gram_tmn_direct_last": 291550,
+    "gram_tmn_estimate": 288932.512,
+    "ton_usdt_last": null,
+    "ton_tmn_direct_last": null,
+    "ton_tmn_estimate": null
+  },
+  "markets": {
+    "GRAMUSDT": {
+      "symbol": "GRAMUSDT",
+      "name_fa": "گرام - تتر",
+      "name_en": "Gram - Tether",
+      "last": 0.968,
+      "bid": 0.963,
+      "ask": 0.968,
+      "buy_status": "ENABLE",
+      "sell_status": "ENABLE"
+    },
+    "USDTTMN": {
+      "symbol": "USDTTMN",
+      "name_fa": "تتر - تومان",
+      "name_en": "Tether - Toman",
+      "last": 298484,
+      "bid": 298431,
+      "ask": 298500,
+      "buy_status": "DISABLE",
+      "sell_status": "DISABLE"
+    },
+    "GRAMTMN": {
+      "symbol": "GRAMTMN",
+      "name_fa": "گرام - تومان",
+      "name_en": "Gram - TOMAN",
+      "last": 291550,
+      "bid": 289333,
+      "ask": 289655,
+      "buy_status": "ENABLE",
+      "sell_status": "ENABLE"
+    },
+    "TONUSDT": {
+      "symbol": "TONUSDT",
+      "name_fa": "تون کوین - تتر",
+      "name_en": "Ton - Tether",
+      "last": null,
+      "bid": null,
+      "ask": null,
+      "buy_status": null,
+      "sell_status": null
+    },
+    "TONTMN": {
+      "symbol": "TONTMN",
+      "name_fa": "تون کوین - تومان",
+      "name_en": "Ton - Toman",
+      "last": null,
+      "bid": null,
+      "ask": null,
+      "buy_status": null,
+      "sell_status": null
+    }
+  },
+  "checks": {
+    "public_endpoint_success": true,
+    "authenticated_endpoint_success": true
+  }
+}
